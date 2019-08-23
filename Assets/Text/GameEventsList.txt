@@ -1,0 +1,68 @@
+{
+"events":[{
+"id":0,
+"triggered":true,
+"triggerDistance":-1,
+"text":"Introduction Event",
+"eventsToTrigger":[1,-1,-1],
+"option1Text":"Continue",
+"option1Results":[6,2,1,0,0]
+},{
+"id":1,
+"triggered":true,
+"triggerDistance":-1,
+"text":"Follow-up to Introduction",
+"eventsToTrigger":[-1,-1,-1],
+"option1Text":"Continue",
+"option1Results":[0,0,0,0,0]
+},{
+"id":2,
+"triggered":true,
+"triggerDistance":294,
+"text":"Guatemala-Mexico border",
+"eventsToTrigger":[-1,-1,-1],
+"option1Text":"Continue",
+"option1Results":[0,0,0,0,0],
+"option2Text":"",
+"option2Results":[0,0,0,0,0],
+"option3Text":"",
+"option3Results":[0,0,0,0,0]
+},{
+"id":3,
+"triggered":true,
+"triggerDistance":-1,
+"text":"Eva Died",
+"eventsToTrigger":[-1,-1,-1],
+"option1Text":"Continue",
+"option1Results":[0,0,0,0,0]
+},{
+"id":4,
+"triggered":true,
+"triggerDistance":-1,
+"text":"Cassie Died",
+"eventsToTrigger":[-1,-1,-1],
+"option1Text":"Continue",
+"option1Results":[0,0,0,0,0]
+},{
+"id":5,
+"triggered":true,
+"triggerDistance":2197,
+"text":"Over the USA-Mexico border",
+"eventsToTrigger":[6,-1,-1],
+"option1Text":"Continue",
+"option1Results":[0,0,0,0,0]
+},{
+"id":6,
+"triggered":true,
+"triggerDistance":294,
+"text":"Epilogue",
+"eventsToTrigger":[-1,-1,-1],
+"option1Text":"Continue",
+"option1Results":[0,0,0,0,0]
+}
+
+
+
+
+]
+}
