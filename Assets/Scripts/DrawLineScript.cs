@@ -14,11 +14,11 @@ public class DrawLineScript : MonoBehaviour {
     public Transform node2;
     public float startWidth = .45f, endWidth = .45f;
     
-    public Dropdown speedDropdown;
+    public float baseSpeed;
 
 	// Use this for initialization
 	void Start () {
-        marginForError = .05f;
+        marginForError = .001f;
 
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.startWidth = startWidth;
@@ -27,32 +27,39 @@ public class DrawLineScript : MonoBehaviour {
         lineRenderer.SetPosition(1, node1.position);
 
         distance = Vector3.Distance(node1.position, node2.position);
-        
-        speedDropdown = GameObject.Find("SpeedDropdown").GetComponent<Dropdown>();
+
+        baseSpeed = .04f;
     }
 	
+    public void SpeedUpdate(int value)
+    {
+        baseSpeed = ((float)value) / 50;
+    }
+
 	// Update is called once per frame
 	void Update () {
         if(node1.GetComponent<Toggle>().isOn)
         {
             if (distance > marginForError)
             {
-                float Speed = ((float)speedDropdown.value)/100;
-
-                float toMove = Speed * Time.deltaTime * GlobalVars._speedMultiplier;
-
-                GlobalVars._currentDistanceInWorld += toMove;
-
+                float toMove = baseSpeed * Time.deltaTime * GlobalVars._speedMultiplier;
+                
+                Vector3 oldPos = Mover.position;
                 Mover.position = Vector3.MoveTowards(Mover.position, node2.position, toMove);
+                GlobalVars._currentDistanceInWorld += Vector3.Distance(Mover.position, oldPos);
 
                 lineRenderer.SetPosition(1, Mover.position);
-
                 distance = Vector3.Distance(Mover.position, node2.position);
             }
             else
             {
                 node2.GetComponent<Toggle>().isOn = true;
                 node2.GetComponent<MeshRenderer>().enabled = true;
+                if (Vector3.Distance(Mover.position, node2.position) > 0)
+                {
+                    GlobalVars._currentDistanceInWorld += Vector3.Distance(Mover.position, node2.position);
+                    Mover.position = node2.position;
+                }
             }
         }
         

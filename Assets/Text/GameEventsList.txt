@@ -1,68 +1,418 @@
 {
-"events":[{
-"id":0,
-"triggered":true,
-"triggerDistance":-1,
-"text":"Introduction Event",
-"eventsToTrigger":[1,-1,-1],
-"option1Text":"Continue",
-"option1Results":[6,2,1,0,0]
-},{
-"id":1,
-"triggered":true,
-"triggerDistance":-1,
-"text":"Follow-up to Introduction",
-"eventsToTrigger":[-1,-1,-1],
-"option1Text":"Continue",
-"option1Results":[0,0,0,0,0]
-},{
-"id":2,
-"triggered":true,
-"triggerDistance":294,
-"text":"Guatemala-Mexico border",
-"eventsToTrigger":[-1,-1,-1],
-"option1Text":"Continue",
-"option1Results":[0,0,0,0,0],
-"option2Text":"",
-"option2Results":[0,0,0,0,0],
-"option3Text":"",
-"option3Results":[0,0,0,0,0]
-},{
-"id":3,
-"triggered":true,
-"triggerDistance":-1,
-"text":"Eva Died",
-"eventsToTrigger":[-1,-1,-1],
-"option1Text":"Continue",
-"option1Results":[0,0,0,0,0]
-},{
-"id":4,
-"triggered":true,
-"triggerDistance":-1,
-"text":"Cassie Died",
-"eventsToTrigger":[-1,-1,-1],
-"option1Text":"Continue",
-"option1Results":[0,0,0,0,0]
-},{
-"id":5,
-"triggered":true,
-"triggerDistance":2197,
-"text":"Over the USA-Mexico border",
-"eventsToTrigger":[6,-1,-1],
-"option1Text":"Continue",
-"option1Results":[0,0,0,0,0]
-},{
-"id":6,
-"triggered":true,
-"triggerDistance":294,
-"text":"Epilogue",
-"eventsToTrigger":[-1,-1,-1],
-"option1Text":"Continue",
-"option1Results":[0,0,0,0,0]
-}
-
-
-
-
-]
+  "events": [
+    {
+      "id": 0,
+	  "ending": false,
+      "triggered": true,
+      "triggerDistance": -1,
+      "text": "Hey Eva,\n\nI was sad to hear that Peter left you. If anyone up hear sees him, we'll give him a thrashing from you. I can only hope that Cassie is alright after the mess he's made of her childhood.\nHonestly, considering you mentioned things weren't getting better with the gangs in your area, you might consider leaving? I know it's come up before, but I heard that there was a group of migrants forming a caravan to try to come north and live in the USA, and I think they're probably passing by San Salvador sometime soon. We'd be more than happy to help you and Cassie out when you get here if you do come.\n\nThink about it?\n\nLove,\nYour Uncle Marco",
+      "eventsToTrigger": [
+        1,
+        -1,
+        -1
+      ],
+      "option1Text": "Continue",
+      "option1Results": [20,2,1,0,0],
+      "option2Text": "",
+      "option2Results": [0,0,0,0,0],
+      "option3Text": "",
+      "option3Results": [0,0,0,0,0]
+    },
+    {
+      "id": 1,
+	  "ending": false,
+      "triggered": true,
+      "triggerDistance": -1,
+      "text": "As much as you didn't want to admit it, Marco was right. Things have been getting steadily worse for a while, and more than once you've had nightmares where Cassie didn't come home.\n\nA few days later, you've got your supplies together, you've found a migrant caravan nearby, and you've joined up with it.\nThings go surprisingly quickly, and before you know it, you're across the border into Guatemala.\nNo going back now, all you can do is hope that you'll both make it to the USA.",
+      "eventsToTrigger": [
+        -1,
+        -1,
+        -1
+      ],
+      "option1Text": "Continue",
+      "option1Results": [0,0,0,0,0],
+      "option2Text": "",
+      "option2Results": [0,0,0,0,0],
+      "option3Text": "",
+      "option3Results": [0,0,0,0,0]
+    },
+    {
+      "id": 2,
+	  "ending": false,
+      "triggered": true,
+      "triggerDistance": 294,
+      "text": "Arriving in the border town of Ayutla, you can't help but be nervous at the sight of the border crossing. Thanks to Marco you knew Mexico was technically giving out humanitarian visas, but you couldn't help but be nervous that you would be detained for some unforeseen reason.\nAs the reality of the situation hits, though, it becomes clear what is actually happening. The border crossing is across a river as well, and the crowd of people clustered on the bridge are more than willing to let you know how long they've been waiting there for a chance to cross: days.\nYou attempt to join the throng and wait at first, but with the tiny trickle of people going through, the crowd hardly seems to move. The next day, having camped there using a bag of clothes as a makeshift mattress, you're reaching your breaking point.",
+      "eventsToTrigger": [
+        8,
+        9,
+        -1
+      ],
+      "option1Text": "Keep waiting and hope",
+      "option1Results": [0,0,0,0,0],
+      "option2Text": "Is that a hole in the fence?",
+      "option2Results": [-1,0,0,0,0],
+      "option3Text": "",
+      "option3Results": [0,0,0,0,0]
+    },
+    {
+      "id": 3,
+	  "ending": false,
+      "triggered": true,
+      "triggerDistance": -1,
+      "text": "You Died.\nYou don't know what will happen to Cassie.\nYou don't know what will happen to the caravaners.\nAll you can do is hope, as the world fades around you.",
+      "eventsToTrigger": [
+        888,
+        -1,
+        -1
+      ],
+      "option1Text": "Continue",
+      "option1Results": [0,0,0,0,0],
+      "option2Text": "",
+      "option2Results": [0,0,0,0,0],
+      "option3Text": "",
+      "option3Results": [0,0,0,0,0]
+    },
+    {
+      "id": 4,
+	  "ending": false,
+      "triggered": true,
+      "triggerDistance": -1,
+      "text": "Cassie Died.\nYou can't keep yourself going.\nIt feels like the world is less bright now, like there's no hope.\nwithout Cassie...\n\nThere's just no point to it.",
+      "eventsToTrigger": [
+        888,
+        -1,
+        -1
+      ],
+      "option1Text": "Continue",
+      "option1Results": [0,0,0,0,0],
+      "option2Text": "",
+      "option2Results": [0,0,0,0,0],
+      "option3Text": "",
+      "option3Results": [0,0,0,0,0]
+    },
+    {
+      "id": 5,
+	  "ending": false,
+      "triggered": true,
+      "triggerDistance": 2197,
+      "text": "Finally. The city of Matamoros is behind you, and you're at the Puente Nuevo - the bridge across into Brownsville, into the USA. You know Marco is waiting for you on the other side - you called from a payphone to let him know where you were and that you were alright.\n\nUnfortunately, as the bridge comes into view, you see a repeat of the crossing into Mexico from Guatemala but worse. The people here have been waiting long enough that they've set up tents on the bridge, waiting for their turn to be processed and hopefully not get turned away. Unlike at Guatemala, there's no other choice here - all you can do is wait. Some locals from Brownsville have set up a food kitchen for the people on the bridge, but there's only so many mouths they can feed.",
+      "eventsToTrigger": [
+        6,
+        -1,
+        -1
+      ],
+      "option1Text": "Wait",
+      "option1Results": [-6,0,0,0,0],
+      "option2Text": "",
+      "option2Results": [0,0,0,0,0],
+      "option3Text": "",
+      "option3Results": [0,0,0,0,0]
+    },
+    {
+      "id": 6,
+	  "ending": false,
+      "triggered": true,
+      "triggerDistance": -1,
+      "text": "It seems like you're one of the luckier ones - you manage to get the officials' attention in only about a week. It's probably only because you've got Cassie with you that you even got through that quickly. You can hear muttered grumbling from the other migrants as you pass into the border control facility.\n\nOnce inside, it's time for multiple rounds of questions - many of which seem to be repeats or variations of other questions that have been asked. They seem very interested in the fact that you've got family waiting for you on the other side, and ultimately it seems that having Marco there is what persuades them to grant you and Cassie asylum.\n\nOn your way through the detention center, you catch glimpses through the occasional open door - you try to make sure Cassie can't make out what's going on, but you can't be sure you've managed - and the sights and sounds of children, crying for but separated from their parents, being held in detention cells, will haunt your dreams for some time. You thank Marco again and again - you can't imagine what it would be like to be forced to put Cassie through that.",
+      "eventsToTrigger": [
+        7,
+        -1,
+        -1
+      ],
+      "option1Text": "Let's just... go",
+      "option1Results": [0,0,0,0,0],
+      "option2Text": "",
+      "option2Results": [0,0,0,0,0],
+      "option3Text": "",
+      "option3Results": [0,0,0,0,0]
+    },
+    {
+      "id": 7,
+	  "ending": false,
+      "triggered": true,
+      "triggerDistance": -1,
+      "text": "The sight of Brownsville is a bittersweet one. You quickly meet up with Marco, you have a wonderful reunion with your old uncle, and there are signs of hope all around - some of the locals have set up clearly labelled information stations in an attempt to welcome the asylum seekers, and a few of the migrants are talking to a group with professional-looking cameras in what looks like an interview for a news channel. But for all the hope, there are still grim reminders dotted here and there - migrants in small groups, or alone, wandering aimlessly with nowhere to go now that they're here; a glimpse of the razor wire that the soldiers have set up near the border, or just a sight of the soldiers themselves; and you can't forget the nightmarish conditions in and before the border.\n\n\nStill. You're here now.\n\nYou're safe.",
+      "eventsToTrigger": [
+        888,
+        -1,
+        -1
+      ],
+      "option1Text": "Continue",
+      "option1Results": [0,0,0,0,0],
+      "option2Text": "",
+      "option2Results": [0,0,0,0,0],
+      "option3Text": "",
+      "option3Results": [0,0,0,0,0]
+    },
+    {
+      "id": 8,
+	  "ending": false,
+      "triggered": true,
+      "triggerDistance": -1,
+      "text": "You force yourself to remain calm. Even as you burn through your supplies, and the weather takes its toll. You can keep yourself and Cassie healthy using some of your supplies, but more than once you consider just giving up.\n\nFinally, you reach the front. Finally, the officials call you and Cassie up.\n\nThey ask you many questions you don't understand the purpose of and only a handful you do, they ask for your documentation, and once they have what they asked for, they still take a long time to process all of it. But finally, at last, you're through.\n\n\n\nNow to cross Mexico and do the same thing but worse at the other end. Joy.",
+      "eventsToTrigger": [
+        -1,
+        -1,
+        -1
+      ],
+      "option1Text": "Continue",
+      "option1Results": [-6,0,0,0,0],
+      "option2Text": "",
+      "option2Results": [0,0,0,0,0],
+      "option3Text": "",
+      "option3Results": [0,0,0,0,0]
+    },
+    {
+      "id": 9,
+	  "ending": false,
+      "triggered": true,
+      "triggerDistance": -1,
+      "text": "You take a closer look as you maneuver yourself over to the edge. Someone has taken down a section of fence along the edge of the bridge, and people are being lowered on to a raft and towed to the other side by a group of helpful young men. You'll need to give them something for their services, but it could save you days of time if this rate of immigration continues.",
+      "eventsToTrigger": [
+        8,
+        10,
+        -1
+      ],
+      "option1Text": "Keep waiting and hope",
+      "option1Results": [0,0,0,0,0],
+      "option2Text": "Take the trip on the raft",
+      "option2Results": [0,0,-1,0,0],
+      "option3Text": "",
+      "option3Results": [0,0,0,0,0]
+    },
+    {
+      "id": 10,
+	  "ending": false,
+      "triggered": true,
+      "triggerDistance": -1,
+      "text": "It's a very nerve-wracking climb down to the raft; one of the men get a small ladder with a rope tied to it and tells you to hang onto it while they lower it down, and even once you're down another man comes down holding Cassie. You also still have to get through the border officials at the other side. But after answering their questions and letting them see your documents - and getting extremely nervous over jumping the line - they eventually let you through.\n\n\n\nNow to cross Mexico and do the something similar but probably worse at the other end. Joy.",
+      "eventsToTrigger": [
+        -1,
+        -1,
+        -1
+      ],
+      "option1Text": "Continue",
+      "option1Results": [0,0,0,0,0],
+      "option2Text": "",
+      "option2Results": [0,0,0,0,0],
+      "option3Text": "",
+      "option3Results": [0,0,0,0,0]
+    },
+    {
+      "id": 888,
+	  "ending": true,
+      "triggered": true,
+      "triggerDistance": -1,
+      "text": "Game Over",
+      "eventsToTrigger": [
+        -1,
+        -1,
+        -1
+      ],
+      "option1Text": "Continue",
+      "option1Results": [0,0,0,0,0],
+      "option2Text": "",
+      "option2Results": [0,0,0,0,0],
+      "option3Text": "",
+      "option3Results": [0,0,0,0,0]
+    },
+    {
+      "id": 1000,
+	  "ending": false,
+      "triggered": false,
+      "triggerDistance": -1,
+      "text": "Some kindly strangers saw you with your daughter and offered you food.",
+      "eventsToTrigger": [
+        1001,
+        1002,
+        1003
+      ],
+      "option1Text": "\"Thanks!\"",
+      "option1Results": [0,0,0,0,0],
+      "option2Text": "\"Can you spare some medicine instead?\"",
+      "option2Results": [0,0,0,0,0],
+      "option3Text": "Mug them.",
+      "option3Results": [0,0,0,0,0]
+    },
+    {
+      "id": 1001,
+	  "ending": false,
+      "triggered": true,
+      "triggerDistance": -1,
+      "text": "The strangers give you a few days worth of food. You're still thanking them minutes later, long after you've moved on.",
+      "eventsToTrigger": [
+        -1,
+        -1,
+        -1
+      ],
+      "option1Text": "Continue",
+      "option1Results": [10,0,0,0,0],
+      "option2Text": "",
+      "option2Results": [0,0,0,0,0],
+      "option3Text": "",
+      "option3Results": [0,0,0,0,0]
+    },
+    {
+      "id": 1002,
+	  "ending": false,
+      "triggered": true,
+      "triggerDistance": -1,
+      "text": "They frown and look at each other, clearly not sure. After a while though, one of them heads back into their house and comes out with a small bottle of antiseptic.\n\"It's all we can afford to give, but we hope it helps.\"",
+      "eventsToTrigger": [
+        -1,
+        -1,
+        -1
+      ],
+      "option1Text": "Continue",
+      "option1Results": [0,1,0,0,0],
+      "option2Text": "",
+      "option2Results": [0,0,0,0,0],
+      "option3Text": "",
+      "option3Results": [0,0,0,0,0]
+    },
+    {
+      "id": 1003,
+	  "ending": false,
+      "triggered": true,
+      "triggerDistance": -1,
+      "text": "You ask Cassie to go stand with the rest of the caravan for a minute and follow the couple into their house under the pretense of helping them pack up the food.\nYou do quite a bit more than that.\nBy the time you leave, you've been injured quite badly and the couple is unconscious, but you have over a week's worth of food, the contents of their medicine cabinet minus what you had to use to make sure you wouldn't get worse, and the ring they tried to offer you to leave them alone.\nYou try to justify it to yourself by saying you need the supplies more than they do. You can't quite make yourself believe it.",
+      "eventsToTrigger": [
+        -1,
+        -1,
+        -1
+      ],
+      "option1Text": "Continue",
+      "option1Results": [20,2,1,-2,0],
+      "option2Text": "",
+      "option2Results": [0,0,0,0,0],
+      "option3Text": "",
+      "option3Results": [0,0,0,0,0]
+    },
+	{
+      "id": 1004,
+	  "ending": false,
+      "triggered": false,
+      "triggerDistance": -1,
+      "text": "You're not sure what happened, but Cassie has gotten sick.",
+      "eventsToTrigger": [
+        1005,
+        1006,
+        1007
+      ],
+      "option1Text": "Use the supplies you have to try to treat her yourself",
+      "option1Results": [0,0,0,0,-1],
+      "option2Text": "Let Cassie tough it out, it's probably not serious",
+      "option2Results": [0,0,0,0,-1],
+      "option3Text": "Ask around to see if anyone can spare medicine",
+      "option3Results": [0,0,0,0,-1]
+    },
+    {
+      "id": 1005,
+	  "ending": false,
+      "triggered": true,
+      "triggerDistance": -1,
+      "text": "You cobble together a treatment with what you have. It's not perfect, but you feel it could have been much worse.",
+      "eventsToTrigger": [
+        -1,
+        -1,
+        -1
+      ],
+      "option1Text": "Continue",
+      "option1Results": [0,-1,0,0,0],
+      "option2Text": "",
+      "option2Results": [0,0,0,0,0],
+      "option3Text": "",
+      "option3Results": [0,0,0,0,0]
+    },
+    {
+      "id": 1006,
+	  "ending": false,
+      "triggered": true,
+      "triggerDistance": -1,
+      "text": "Cassie whimpers in pain for a few hours, trying to be a big girl and keep herself together. She's really not in good shape after her ordeal.",
+      "eventsToTrigger": [
+        -1,
+        -1,
+        -1
+      ],
+      "option1Text": "Continue",
+      "option1Results": [0,0,0,0,-1],
+      "option2Text": "",
+      "option2Results": [0,0,0,0,0],
+      "option3Text": "",
+      "option3Results": [0,0,0,0,0]
+    },
+    {
+      "id": 1007,
+	  "ending": false,
+      "triggered": true,
+      "triggerDistance": -1,
+      "text": "You ask around some of the other caravan members if they know how to cure her with what you've got. Eventually, you find someone who seems to know what he's talking about - but he'll be using his own medicine for this, and he needs resources in trade.",
+      "eventsToTrigger": [
+        1005,
+        1006,
+        1008
+      ],
+      "option1Text": "Use the supplies you have to try to treat her yourself",
+      "option1Results": [0,0,0,0,0],
+      "option2Text": "Let Cassie tough it out, it's probably not serious",
+      "option2Results": [0,0,0,0,0],
+      "option3Text": "Pay the man to treat her",
+      "option3Results": [0,0,0,0,0]
+    },
+    {
+      "id": 1008,
+	  "ending": false,
+      "triggered": true,
+      "triggerDistance": -1,
+      "text": "The man works deftly and swiftly, leaving Cassie breathing peacefully as she rests to recover from the illness. You're pretty sure the man overcharged for what he did, but really, it was worth it to see her safe.",
+      "eventsToTrigger": [
+        -1,
+        -1,
+        -1
+      ],
+      "option1Text": "Continue",
+      "option1Results": [-4,0,-1,0,2],
+      "option2Text": "",
+      "option2Results": [0,0,0,0,0],
+      "option3Text": "",
+      "option3Results": [0,0,0,0,0]
+    },
+    {
+      "id": 1009,
+	  "ending": false,
+      "triggered": false,
+      "triggerDistance": -1,
+      "text": "Some kindly strangers saw you with your daughter and offered you food.",
+      "eventsToTrigger": [
+        1001,
+        1002,
+        1003
+      ],
+      "option1Text": "\"Thanks!\"",
+      "option1Results": [0,0,0,0,0],
+      "option2Text": "\"Can you spare some medicine instead?\"",
+      "option2Results": [0,0,0,0,0],
+      "option3Text": "Mug them.",
+      "option3Results": [0,0,0,0,0]
+    },
+    {
+      "id": 1010,
+	  "ending": false,
+      "triggered": false,
+      "triggerDistance": -1,
+      "text": "Some kindly strangers saw you with your daughter and offered you food.",
+      "eventsToTrigger": [
+        1001,
+        1002,
+        1003
+      ],
+      "option1Text": "\"Thanks!\"",
+      "option1Results": [0,0,0,0,0],
+      "option2Text": "\"Can you spare some medicine instead?\"",
+      "option2Results": [0,0,0,0,0],
+      "option3Text": "Mug them.",
+      "option3Results": [0,0,0,0,0]
+    }
+  ]
 }

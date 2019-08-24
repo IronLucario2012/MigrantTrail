@@ -32,7 +32,8 @@ public class EventScreenScript : MonoBehaviour {
 
     public void StartEvent(GameEvent gameEvent)
     {
-        CheckGameOverEvent(gameEvent);
+        if (gameEvent.ending) SceneManager.LoadScene("GameOverScene");
+
         GlobalVars._speedMultiplier = 0;
         GlobalVars._isInEvent = true;
 
@@ -45,7 +46,7 @@ public class EventScreenScript : MonoBehaviour {
         button1.GetComponentInChildren<Text>().text = gameEvent.option1Text;
         button1.onClick.AddListener(EndEvent);
         if(gameEvent.eventsToTrigger[0] != -1)
-            button1.onClick.AddListener(() => StartEvent(GlobalVars._gameEvents.events[gameEvent.eventsToTrigger[0]]));
+            button1.onClick.AddListener(() => StartEvent(GlobalVars.GetEventByID(gameEvent.eventsToTrigger[0])));
 
         if (!string.IsNullOrEmpty(gameEvent.option2Text))
         {
@@ -55,18 +56,25 @@ public class EventScreenScript : MonoBehaviour {
             button2.GetComponentInChildren<Text>().text = gameEvent.option2Text;
             button2.onClick.AddListener(EndEvent);
             if (gameEvent.eventsToTrigger[1] != -1)
-                button2.onClick.AddListener(() => StartEvent(GlobalVars._gameEvents.events[gameEvent.eventsToTrigger[1]]));
-
-            if (!string.IsNullOrEmpty(gameEvent.option3Text))
-            {
-                button3.gameObject.SetActive(true);
-                button3.onClick.RemoveAllListeners();
-                button3.onClick.AddListener(() => Resources.SetAllResources(gameEvent.option3Results));
-                button3.GetComponentInChildren<Text>().text = gameEvent.option3Text;
-                button3.onClick.AddListener(EndEvent);
-                if (gameEvent.eventsToTrigger[2] != -1)
-                    button3.onClick.AddListener(() => StartEvent(GlobalVars._gameEvents.events[gameEvent.eventsToTrigger[2]]));
-            }
+                button2.onClick.AddListener(() => StartEvent(GlobalVars.GetEventByID(gameEvent.eventsToTrigger[1])));
+        }
+        else
+        {
+            button2.gameObject.SetActive(false);
+        }
+        if (!string.IsNullOrEmpty(gameEvent.option3Text))
+        {
+            button3.gameObject.SetActive(true);
+            button3.onClick.RemoveAllListeners();
+            button3.onClick.AddListener(() => Resources.SetAllResources(gameEvent.option3Results));
+            button3.GetComponentInChildren<Text>().text = gameEvent.option3Text;
+            button3.onClick.AddListener(EndEvent);
+            if (gameEvent.eventsToTrigger[2] != -1)
+                button3.onClick.AddListener(() => StartEvent(GlobalVars.GetEventByID(gameEvent.eventsToTrigger[2])));
+        }
+        else
+        {
+            button3.gameObject.SetActive(false);
         }
     }
 
@@ -79,22 +87,6 @@ public class EventScreenScript : MonoBehaviour {
 
         GlobalVars._speedMultiplier = 1;
         GlobalVars._isInEvent = false;
-    }
-
-    void CheckGameOverEvent(GameEvent ge)
-    {
-        switch(ge.id)
-        {
-            case 3: //Eva Died
-            case 4: //Cassie Died
-                GlobalVars._isGoodEnding = false;
-                break;
-            case 6: //Over the Border
-            GlobalVars._isGoodEnding = true;
-                break;
-            default:return;
-        }
-        SceneManager.LoadScene("GameOverScene");
     }
 }
 

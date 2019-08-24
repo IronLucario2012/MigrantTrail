@@ -15,11 +15,16 @@ public class GlobalVars : MonoBehaviour {
     public static bool _isInEvent; //Whether or not there is currently an event triggered
     public static int _speedMultiplier; //Amount for speed to be multiplied by; 0 for during events, 1 during normal gameplay
     public static GameEventList _gameEvents; //Container with an array of the in-game events that can happen
+    public static List<GameEvent> _randomEvents; //List of all random events
+    public static List<GameEvent> _triggeredEvents; //List of all non-random events
     public static bool _isGoodEnding; //Which ending did the player get
+    public static int _rationingLevel; //Determines how much food is consumed in a certain distance
+    public static float _averageKMPerRandom; //Determines how many kilometers pass on average before a new random event pops up
 
     public TextAsset gameEventsFile; //File containing the list of events
     public EventScreenScript eventScript; //Instance of game event handling script
-    
+    public int foodCounter; //Keeps track of when food is consumed
+
     public Text kmText;
     public string kmWords = "Distance Travelled (km): ";
     
@@ -28,17 +33,26 @@ public class GlobalVars : MonoBehaviour {
         _currentDistance = 0;
         _currentDistanceInWorld = 0f;
         _distanceInWorld = GetWorldDistance();
-        _distanceRatio = _distanceInWorld / _distance;
+        _distanceRatio = _distanceInWorld / (_distance + 1);
         _isInEvent = false;
         _speedMultiplier = 0;
         _isGoodEnding = false;
+        _rationingLevel = 2;
+        _triggeredEvents = new List<GameEvent>();
+        _randomEvents = new List<GameEvent>();
+        _averageKMPerRandom = 100;
     }
 
     void Start()
     {
         _gameEvents = JsonUtility.FromJson<GameEventList>(gameEventsFile.text);
+        foreach (GameEvent ge in _gameEvents.events)
+        {
+            if (ge.triggered) _triggeredEvents.Add(ge);
+            else _randomEvents.Add(ge);
+        }
         eventScript = EventScreenScript.Instance();
-        eventScript.StartEvent(_gameEvents.events[0]); //Starts introductory event
+        eventScript.StartEvent(GetEventByID(0)); //Starts introductory event
     }
 
     float GetWorldDistance()
@@ -56,6 +70,15 @@ public class GlobalVars : MonoBehaviour {
         return result;
     }
 
+    public static GameEvent GetEventByID(int id)
+    {
+        foreach(GameEvent ge in _gameEvents.events)
+        {
+            if (ge.id == id) return ge;
+        }
+        return null;
+    }
+
     private void Update()
     {
         if(_currentDistance < _distance)
@@ -66,25 +89,42 @@ public class GlobalVars : MonoBehaviour {
             {
                 _currentDistance = checkDistance;
                 DistanceUpdate();
+                if (_currentDistance > 0 && _currentDistance % 30 == 0)
+                {
+                    Resources.SetFood(0 - _rationingLevel);
+                    Resources.SetCHealth(_rationingLevel - 2);
+                    Resources.SetMHealth(_rationingLevel - 2);
+                }
             }
         }
     }
 
     public void DistanceUpdate()
     {
-        foreach(GameEvent ge in _gameEvents.events)
+        foreach(GameEvent ge in _triggeredEvents)
         {
             if (ge.triggerDistance == _currentDistance)
                 eventScript.StartEvent(ge);
         }
+        float rf = UnityEngine.Random.Range(0f, 1f);
+        if (rf < 1.0f/_averageKMPerRandom && !_isInEvent)
+        {
+            int r = UnityEngine.Random.Range(0, _randomEvents.Count);
+            eventScript.StartEvent(_randomEvents[r]);
+        }
     }
 
+    public void ChangeRationLevel(int value)
+    {
+        _rationingLevel = value;
+    }
 }
 
 [Serializable]
 public class GameEvent
 {
-    public readonly int id;
+    public int id;
+    public bool ending = false; //Whether the event brings the player to the end screen
     public bool triggered = false; //True if the event needs to be triggered, false if it can happen randomly
     public int triggerDistance = -1; //Distance in KM at which the event is triggered, if it is a distance-triggered event. -1 if it's not
     public string text = "";

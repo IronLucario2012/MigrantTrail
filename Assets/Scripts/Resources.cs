@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class Resources : MonoBehaviour {
 
-    private static int food = 0;
+    public EventScreenScript eventScript; //Instance of game event handling script
+
+    private static int food = 0; //Amount of food in units of how much Eva and Cassie eat over a certain distance
     private static int medicine = 0;
     private static int valuables = 0;
 
@@ -32,12 +34,14 @@ public class Resources : MonoBehaviour {
         valuablesText = GameObject.Find("ValuablesText").GetComponent<Text>();
         mHealthText = GameObject.Find("MotherHealthText").GetComponent<Text>();
         cHealthText = GameObject.Find("ChildHealthText").GetComponent<Text>();
+        eventScript = EventScreenScript.Instance();
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        if (childHealth <= 0) CharacterIsDead(false);
+        if (motherHealth <= 0) CharacterIsDead(true);
+    }
 
     #region Getters & Setters
 
@@ -83,9 +87,14 @@ public class Resources : MonoBehaviour {
         if (amount + valuables >= 0)
         {
             valuables += amount;
-            valuablesText.text = valuablesLabel + valuables;
         }
-        
+        else
+        {
+            valuables = 0;
+            SetFood(-2);
+            foodText.text = foodLabel + food;
+        }
+        valuablesText.text = valuablesLabel + valuables;
     }
 
     public static string GetMHealth()
@@ -97,12 +106,24 @@ public class Resources : MonoBehaviour {
     }
     public static void SetMHealth(int amount)
     {
-        if (amount + motherHealth >= 0 && amount + motherHealth < healthStates.Length)
+        if (amount + motherHealth >= 0)
         {
-            motherHealth += amount;
+            if (amount + motherHealth < healthStates.Length)
+            {
+                motherHealth += amount;
+                mHealthText.text = mHealthLabel + GetMHealth();
+            }
+            else
+            {
+                motherHealth = healthStates.Length - 1;
+                mHealthText.text = mHealthLabel + GetMHealth();
+            }
+        }
+        else
+        {
+            motherHealth = 0;
             mHealthText.text = mHealthLabel + GetMHealth();
         }
-        
     }
 
     public static string GetCHealth()
@@ -114,12 +135,24 @@ public class Resources : MonoBehaviour {
     }
     public static void SetCHealth(int amount)
     {
-        if (amount + childHealth >= 0 && amount + childHealth < healthStates.Length)
+        if (amount + childHealth >= 0)
         {
-            childHealth += amount;
-            cHealthText.text = cHealthLabel + GetCHealth();
+            if (amount + childHealth < healthStates.Length)
+            {
+                childHealth += amount;
+                cHealthText.text = cHealthLabel + GetMHealth();
+            }
+            else
+            {
+                childHealth = healthStates.Length - 1;
+                cHealthText.text = cHealthLabel + GetMHealth();
+            }
         }
-        
+        else
+        {
+            childHealth = 0;
+            cHealthText.text = cHealthLabel + GetMHealth();
+        }
     }
 
     public static void SetAllResources(int newFood, int newMedicine, int newValuables, int newMHealth, int newCHealth)
@@ -139,4 +172,11 @@ public class Resources : MonoBehaviour {
         SetCHealth(amounts[4]);
     }
     #endregion
+
+    //3 mother, 4 daughter
+
+    public void CharacterIsDead(bool isMother)
+    {
+        eventScript.StartEvent(GlobalVars.GetEventByID(isMother ? 3 : 4));
+    }
 }
